@@ -1,33 +1,17 @@
 pipeline {
     agent any
 
-    environment {
-        // Define your two numbers here
-        NUM1 = 5
-        NUM2 = 10
-    }
-
     stages {
-        stage('Initialize') {
-            steps {
-                echo "Preparing to add ${env.NUM1} and ${env.NUM2}"
-            }
-        }
-
-        stage('Addition') {
+        stage('Sum of Two Numbers') {
             steps {
                 script {
-                    // We use a script block for basic math logic
-                    def sum = env.NUM1.toInteger() + env.NUM2.toInteger()
-                    echo "The Total Sum is: ${sum}"
+                    int a = 10
+                    int b = 20
+                    int sum = a + b
+                    echo "Sum of ${a} and ${b} is: ${sum}"
                 }
             }
         }
     }
+}
 
-    post {
-        success {
-            echo "Math operation completed successfully!"
-        }
-    }
-}jenkins
